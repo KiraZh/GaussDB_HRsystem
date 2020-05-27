@@ -97,7 +97,7 @@ public class DataBaseTools {
                 sql = HRSystem.conn.prepareStatement("SELECT * FROM staffs WHERE section_id IN" +
                         "(SELECT section_id FROM staffs WHERE staff_id = ?)" +
                         "ORDER BY salary DESC");
-            } else return;    //后续写错误信息
+            } else return;
             sql.setString(1, HRSystem.userName);
         }
         else if(userID == 3){
@@ -105,7 +105,7 @@ public class DataBaseTools {
                 sql = HRSystem.conn.prepareStatement("SELECT * FROM staffs ORDER BY staff_id");
             } else if (op == 2) {
                 sql = HRSystem.conn.prepareStatement("SELECT * FROM staffs ORDER BY salary DESC");
-            } else return;    //后续写错误信息
+            } else return;
         }
         ResultSet result = sql.executeQuery();
         while(result.next()){
@@ -152,7 +152,7 @@ public class DataBaseTools {
                 String name = s.nextLine();
                 sql.setString(2, name);
                 sql.setString(3, name);
-            } else return;    //后续写错误信息
+            } else return;
         }
         else if (userID==3){
             if (op == 1) {
@@ -168,7 +168,7 @@ public class DataBaseTools {
                 String name = s.nextLine();
                 sql.setString(1, name);
                 sql.setString(2, name);
-            } else return;    //后续写错误信息
+            } else return;
         }
         ResultSet result = sql.executeQuery();
         if(result.next()) {
@@ -348,7 +348,6 @@ public class DataBaseTools {
         sql.setString(4,city);
         sql.setString(5,state);
         sql.setString(6,stateID);
-//        System.out.println(placeID+address+postalCode+city+state+stateID);
         if(sql.executeUpdate()==1){
             System.out.println("增加数据成功");
         }
@@ -369,7 +368,6 @@ public class DataBaseTools {
         sql.setString(1,staffID);
         ResultSet result = sql.executeQuery();
 
-        //下面要改成while
         if(result.next()){
             System.out.println("staff ID: " + result.getString(1));
             System.out.println("time : " + result.getString(2) +
